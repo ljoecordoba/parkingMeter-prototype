@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<!-- esta es la pantalla principal de la pagina web, sobre ella se mostrara toda la informacion de la misma-->
+<head>
+	<meta charset="utf-8">
+	<title>EstacioneYa</title>
+
+	<!-- Carga de links y archivos -->
+	<link rel="stylesheet" type="text/css" href="PanelEstilo.css">
+	<link rel="stylesheet" type="text/css" href="pantalla.css">
+	<link rel="stylesheet" type="text/css" href="button.css">
+	
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="leaflet/leaflet.css">
+	<link rel="stylesheet" type="text/css" href="MarkerCluster.css">
+	<link rel="stylesheet" type="text/css" href="MarkerCluster.Default.css">
+
+	<script type="text/javascript" src="MapaControlador.js"></script>
+	<script type="text/javascript" src = "leaflet/leaflet.js"></script>
+	<script type="text/javascript" src="leaflet.markercluster-src.js"></script>
+	<script type="text/javascript" src="Zona.js"></script>
+	<script type="text/javascript" src="Estacionamiento.js"></script>
+	<script type="text/javascript" src="Comercio.js"></script>
+	<script type="text/javascript" src="VistasLoader.js"></script>
+	<script type="text/javascript" src="MapaUsuario.js"></script>
+	<script type="text/javascript" src="Request.js"></script>
+	<script type="text/javascript" src="RequestUbicacion.js"></script>
+</head>
+
+<body >
+
+	<!-- carga de panel izquierdo el cual nos permitira navegar por la pagina -->
+	<div    id="divIzquierdo">
+			<p class="pacifico">EstacionamientoYa</p>
+			<!-- lista de botones para navegar por la web -->
+			<ul id ="lista">
+				<li id="descripcion" onclick="mostrarDescripcion();">Inicio </li>
+
+				<li onclick="cargarVistaControlador();">Ver estado general</li>
+
+				<li onclick="cargarVistaUsuario();">Ver lugares de interes</li>
+
+  				<li onclick="cargarVistaInfracciones();">Ver Infracciones</li>
+  				
+  				<li onclick="cargarVistaAcarreo();">Ver estado Acarreos</li>
+			</ul>
+	</div>
+
+	<!-- pantalla de bienvenida, luego de mostrarse se ocultara -->
+	<div id="idDescripcion" class="letra">
+		<p>Bienvenidos a EstacionamientoYa</p>
+		<p>EstacionamientoYa es un sistema de parquímetros virtuales para ordenar el tráfico y fomentar la rotación.</p>
+		<p>Los usuarios podran pagar fácilmente con diversos medios  de  pago, con  distintas  tarifas de acuerdo a la zona correspondiente.</p>
+	</div>
+
+	<!-- pantalla contenedora de mapa de controlador -->
+	<div id = "pantalla1"  class ="vistas"></div>
+
+	<!-- pantalla contenedora de mapa de usuario -->
+	<div id = "pantalla2" class = "vistas"></div>
+
+	<!-- pantalla contenedora de la pantalla donde se visualizan las infracciones -->
+	<div id="pantalla3" class="pantallaInfraccion">
+		<!-- interfaz de busqueda de infracciones por patentes -->
+		<div id="divInterno1">
+			<p2>Busque infracciones con la patente</p2>
+			<br><input id = "texto" type="text" value="" placeholder="Ej.AAA123"><br>
+		<button class="button" onclick="accion();">Enviar</button>
+		</div>
+		<!-- contenedor donde se desplegara la informacion sobre las infracciones-->
+		<div id="divInterno2"></div>
+	</div>
+
+	<!-- pantalla contenedora donde se visualizan los acarreos de un vehiculo -->
+	<div id="pantalla4" class= "pantallaAcarreos">
+		<!-- interfaz de busqueda de acarreos por patentes -->
+		<div id="divUbicacion">
+			<p2>Consultas de Acarreos</p2>
+			<br><input id = "idInfraccion" type="text" value="" placeholder="ID infraccion"><br>
+		<button class = "button" onclick="requestUbicacion();">Enviar</button>
+		</div>
+		<!-- contenedor de la informacion del acarreo de dicha patente -->
+		<div  id="divRespUbicacion"></div>
+		<!-- contenedor de la imagen de las gruas -->
+		<div id="fondoIMG" class="fondoAcarreo"></div>
+	</div>
+</body>
+</html>
